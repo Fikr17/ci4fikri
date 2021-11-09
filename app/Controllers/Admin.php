@@ -12,78 +12,139 @@ class Admin extends BaseController
     {
         $this -> model = new TesModel();
     }
+
+    // fungsi mengarahkan
     public function formTambah()
     {
+        session();
         $dikirim=[
-            'title'=>'Tambah Data'
+            'title'=>'Tambah Data',
+            'validate' => \Config\Services::validation(),
         ];
         return view('/CrudProduct/Create', $dikirim);
     }
 
- //bagian crud untuk admin
-    public function index()
+    public function formEdit($id = null)
     {
-        // $this-> model sama dengan $model = new TesModel(); tanpa construct
-        $data = $this->model->findAll();
-        d($data);
-        //kirim data lewat seperti $_get
+        $data=$this->model->find(['id'=>$id]);
+        session();
+        $dikirim=[
+            'data'=>$data,
+            'title'=>'Edit Data',
+            'validate' => \Config\Services::validation(),
+        ];
+        return view('/CrudProduct/Edit', $dikirim);
+    }
+
+ //bagian crud untuk admin
+    public function funcData()
+    {
+        
+        $currentPage = $this->request->getVar('page_data')? $this->request->getVar('page_data') : 1;
+
         $dikirim = [
-            'title' => 'Tabel', //berhasil
-            'data' => $data //data adalah nama table di database
+            'title' => 'Data Produk', 
+            'data' => $this->model->paginate(5,'data'), 
+            'pager'=> $this->model->pager, 
+            'currentPage'=>$currentPage,
         ];
         return view('/CrudProduct/Table', $dikirim);
     }
 
+    // fungsi create data
     public function create()
     {
-        $validasi =[
-            'gambar' => 'required',
-            'nama' => 'required',//<-tambahan agar tidak boleh sama|is_unique [data.nama]
-            'asal' => 'required'
-        ];
-        $tambah =[//bagian masukkan ke database
-            'gambar' => $this->request->getVar('gambar'),
-            'nama' => $this->request->getVar('nama'),
-            'asal' => $this->request->getVar('asal'),
-        ];
-
-        if(!$this ->validate($validasi)){
-            $validation = \Config\Services::validation(); //ini cara cek validasi berjalan tidak
-            // d($validation);
-            // return $this->validator->getErrors();//ini bener stop agar data tidak masuk ke database. tapi bagaimana menampilkan pesan
-            return redirect()->to('/Home/tambah')->withInput()->with('validation', $validation);
+        // $validasi =;
+        if(!$this ->validate([
+            'gambar' => [
+                'rules'=> 'uploaded[gambar]|max_size[gambar,10240]|mime_in[gambar,image/png,image/jpg]|is_image[gambar]',
+                'errors'=> [
+                    'uploaded' => 'harus upload gambar',
+                    'is_image' => 'yang anda pilih bukan gambar',
+                    'max_size' => 'ukuran maksimal 10 MB',
+                    'mime_in' => 'yang anda pilih bukan gambar',
+                ]
+            ],
+            'nama' => 'required',
+            'harga' => 'required'
+        ])){
+            return redirect()->to('/Admin/formTambah')->withInput();
         }
-        
-        $this->model->save($tambah);//sudah bisa
-        return redirect()->to('/');
+
+            $fileGambar= $this->request->getFile('gambar');//dari input form
+            $randomName=$fileGambar->getRandomName();
+            $fileGambar->move('images', $randomName);
+
+            $tambah =[//bagian masukkan ke database
+                'gambar' => $randomName,
+                'nama' => $this->request->getVar('nama'),
+                'harga' => $this->request->getVar('harga'),
+                ];
+
+        $this->model->save($tambah);
+        session()->setFlashdata('pesan', 'Berhasil ditambahkan');
+        return redirect()->to('/Admin/funcData');
     }
 
-    public function detail($id = null)
+
+    public function update($id = null)
+        {
+            $val = $this->validate([
+                'gambar' => [
+                    'rules' => 'max_size[gambar,2024]|is_image[gambar]|mime_in[gambar,image/jpg,image/jpeg,image/png]',
+                    'errors' => [
+                        'max_size' => 'Ukuran gambar melebihi 2 MB',
+                        'is_image' => 'Yang anda pilih bukan gambar',
+                        'mime_in' => 'Yang anda pilih bukan gambar'
+                    ]
+                ],
+                'nama' => 'required',
+                'harga' => 'required'
+            ]);
+            
+            if(!$val){
+                return redirect()->to('/Admin/formEdit/'.$id)->withInput();
+            }
+            $imgUpdate = $this->request->getFile('gambar');
+
+            if($imgUpdate->getError() == 4){
+                $namaGambar = $this->request->getVar('imgLama');
+            }else{
+                // hanya variable untuk unlink
+                $imgLama = $this->request->getVar('imgLama');
+                // ini yg diambil
+                $namaGambar=$imgUpdate->getRandomName();
+                $imgUpdate->move('images', $namaGambar);
+                if($imgLama!=''){
+                    unlink('images/'. $imgLama);
+                };
+            }
+            
+            $update =[//bagian masukkan ke database
+                'id' => $id,
+                'gambar' => $namaGambar,
+                'nama' => $this->request->getVar('nama'),
+                'harga' => $this->request->getVar('harga'),
+            ];
+            session()->setFlashdata('pesan', 'Berhasil update data '.$id);
+            $this->model->save($update);
+            return redirect()->to('/Admin/funcData');
+        }
+
+    public function funcDeleteData($id = null)
     {
-        //
+        $data = $this->model->find($id);
+        // menghapus file di hard disk kita
+        if($data['gambar']==''){
+            $this->model->delete($id);
+            session()->setFlashdata('pesan', 'Data berhasil dihapus');
+            return redirect()->to('/Admin/funcData');
+        }
+        unlink('images/'. $data['gambar']);
+
+        $this->model->delete($id);
+        session()->setFlashdata('pesan', 'Data berhasil dihapus');
+        return redirect()->to('/Admin/funcData');
     }
 
-    public function update($id = null)//berhasil edit
-    {
-        helper(['form']);
-        $rules =[
-            'gambar' => 'required',
-            'nama' => 'required',//<-tambahan agar tidak boleh sama|is_unique [data.nama]
-            'asal' => 'required'
-        ];
-        $tambah =[//bagian masukkan ke database
-            'gambar' => $this->request->getVar('gambar'),
-            'nama' => $this->request->getVar('nama'),
-            'asal' => $this->request->getVar('asal'),
-        ];
-
-        $this->model->update($id, $tambah);
-        
-        //return redirect()->to('/');
-    }
-
-    public function delete($id = null)
-    {
-        //
-    }
 }

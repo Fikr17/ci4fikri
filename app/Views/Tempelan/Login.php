@@ -26,17 +26,31 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/coffee">Home</a>
+                    <a class="nav-link" href="<?= base_url('/Home/coffee'); ?>">Home</a>
+                </li>
+                <?php if(allow('admin'||'user')): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('/Produk/produk'); ?>">Produk</a>
+                </li>
+                <?php endif; ?>
+                <?php if(!allow('admin'||'user')): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?= base_url('/Home/login'); ?>">Login</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/produk">Produk</a>
+                    <a class="nav-link" href="<?= base_url('/Home/register'); ?>">Register</a>
                 </li>
+                <?php endif; ?>
+                <?php if(allow('admin'))://dari youtube Agung Widhiatmojo ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/login">Login</a>
+                    <a class="nav-link" href="<?php echo base_url('/Admin/funcData')?>">Admin</a>
                 </li>
+                <?php endif; ?>
+                <?php if(allow('admin'||'user')): ?>
                 <li class="nav-item">
-                    <a class="nav-link" href="/Home/register">Register</a>
+                    <a class="nav-link" href="<?php echo base_url('/Auth/logout')?>">Log out</a>
                 </li>
+                <?php endif; ?>
             </ul>
             </div>
         </div>
@@ -57,10 +71,17 @@
     </div>
 
     <div class="links">
-    <a href="<?php echo base_url('/Home/coffee')?>">home</a>
-        <a href="<?php echo base_url('/Home/produk')?>">products</a>
+        <a href="<?php echo base_url('/Home/coffee')?>">home</a>
+        <?php if(allow('admin'||'user')): ?>
+        <a href="<?php echo base_url('/Produk/produk')?>">produk</a>
+        <?php endif; ?>
+        <?php if(allow('admin')): ?>
+        <a href="<?php echo base_url('/Admin/funcData')?>">admin</a>
+        <?php endif; ?>
+        <?php if(!allow('admin'||'user')): ?>
         <a href="<?php echo base_url('/Home/login')?>">login</a>
         <a href="<?php echo base_url('/Home/register')?>">Register</a>
+        <?php endif; ?>
     </div>
 
     <div class="credit">created by <span>M. Fikri Aulian</span> | all rights reserved</div>

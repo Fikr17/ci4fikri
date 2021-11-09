@@ -262,6 +262,51 @@ section{
     line-height: 1.8;
 }
 
+/* kelebihan */
+.kelebihan .box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap:1.5rem;
+}
+
+.kelebihan .box-container .box{
+    padding:5rem;
+    text-align: center;
+}
+
+.kelebihan .box-container .box h2{
+    color: var(--main-color);
+    font-size: 2.5rem;
+    padding:1rem 0;
+}
+
+.kelebihan .box-container .box p{
+    color: #fff;
+    font-size: 2rem;
+    padding:.5rem 0;
+}
+
+.kelebihan .box-container .box:hover{
+    background: var(--main-color);
+}
+
+.kelebihan .box-container .box:hover > *{
+    color:var(--black);
+}
+
+.kelebihan .box-container .box img{
+    height: 13rem;
+    width: 13rem;
+    line-height: 5.7rem;
+    font-size: 3rem;
+    color:#fff;
+    border:.25rem solid rgba(255,255,255,.3);
+    margin:.3rem;
+    border-radius: 50%;
+}
+
+
+/* layanan */
 .layanan .box-container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));

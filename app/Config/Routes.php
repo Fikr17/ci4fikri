@@ -34,14 +34,12 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 // $routes->get('/route', 'Home::tes');// '/route' memperpendek pencarian url
 $routes->get('/', 'Home::coffee');
-$routes->get('/Admin/create', 'Admin::create');
-$routes->get('/Home/(:num)', 'Home::edit/$1');
+$routes->get('/', 'Home::login');
+$routes->delete('/Admin/(:num)', 'Admin::funcDeleteData/$1');
+$routes->get('/Admin/formEdit/(:num)', 'Admin::formEdit/$1');
 
-$routes->get('/coffee', 'Home::coffee');
-$routes->get('/about', 'Home::about');
-$routes->get('/contact', 'Home::contact');
-$routes->get('/produk', 'Home::produk');
-
+$routes->get('/produk', 'Produk::produk');
+$routes->get('/Home/coffee', 'Home::coffee');
 
 /*
  * --------------------------------------------------------------------

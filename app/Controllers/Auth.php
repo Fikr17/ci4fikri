@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsersModel;
-use App\Models\AuthModel;
 
 class Auth extends BaseController
 {
@@ -19,9 +18,26 @@ class Auth extends BaseController
     public function funcRegister(){
         $val = $this->validate(
             [
-                'username' => 'required|is_unique[users.username]', 
-                'email' => 'required|is_unique[users.EMAIL]',
-                'password' => 'required|min_length[8]',
+                'username' => [
+                    'rules'=>'required',
+                    'errors'=>[
+                        'required'=>'{field} harus diisi'
+                        ]
+                    ] , 
+                'password' => [
+                    'rules'=>'required|min_length[8]',
+                    'errors'=>[
+                        'required'=>'{field} harus diisi',
+                        'min_length'=>'{field} minimal 8 digit'
+                        ]
+                    ],
+                'email' => [
+                    'rules'=> 'required|is_unique[users.email]',
+                    'errors'=> [
+                        'required'=>'{field} harus diisi.',
+                        'is_unique'=>'{field} sudah pernah terdaftar'
+                        ]
+                    ],
             ],
           );
         if(!$val){
@@ -36,7 +52,7 @@ class Auth extends BaseController
             'level' => $this->request->getPost('level'),
         ];
         $this->model->insert($data);
-        session()->setFlashdata('pesan','Selamat Anda berhasil Registrasi, silakan login!');
+        session()->setFlashdata('pesan','Selamat, Anda berhasil Registrasi, silakan login!');
         return redirect()->to('/Home/login');
     }
     
@@ -48,13 +64,13 @@ class Auth extends BaseController
             'email' => [
                 'rules'=> 'required',
                 'errors'=> [
-                    'required'=>'{field} email harus diisi.'
+                    'required'=>'{field} harus diisi.'
                 ]
             ],
             'password'=>[
                 'rules'=> 'required',
                 'errors'=>[
-                    'required'=>'{field} password harus diisi'
+                    'required'=>'{field} harus diisi'
                 ]
                 ],
         ]))
@@ -68,7 +84,6 @@ class Auth extends BaseController
         $email = $this->request->getPost('email');
         $password = $this->request->getPost('password');
         $row = $this->model->get_data_login($email,$table);
-        // dd($row);
 
         if ($row == NULL){
             session()->setFlashdata('pesan','email anda salah');
@@ -81,12 +96,26 @@ class Auth extends BaseController
                     'email' => $row->email,
                     'level' => $row->level,
                 );
-                session()->set($data);
-                session()->setFlashdata('pesan','Berhasil Login');
-                return redirect()->to('/Home/produk');
+                if($data['level']=='admin'){
+                    session()->set($data);
+                    session()->setFlashdata('pesan','Berhasil Login');
+                    return redirect()->to('/Admin/funcData');
+                }
+                elseif($data['level']=='user'){
+                    session()->set($data);
+                    session()->setFlashdata('pesan','Berhasil Login');
+                    return redirect()->to('/Produk/produk');
+                }
         }
         session()->setFlashdata('pesan','Password Salah');
         return redirect()->to('/Home/login')->withInput()->with('validate', $pesanvalidasi);
     }
 
+    
+    public function logout(){
+        $session = session();
+        $session->destroy();
+        session()->setFlashdata('pesan','Berhasil Logout');
+        return redirect()->to('/Home/login');
+    }
 }

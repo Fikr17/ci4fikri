@@ -35,7 +35,8 @@ class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = [];
+    protected $helpers = ['tolong'];//nama file helper tolong.php
+    //nama file helper harus ada _helper. contoh: me_helper.php
 
     /**
      * Constructor.

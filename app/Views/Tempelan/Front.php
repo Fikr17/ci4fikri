@@ -28,16 +28,32 @@
         <a href="#layanan">Layanan</a>
         <a href="#about">about</a>
         <a href="#contact">contact</a>
-        <a href="<?php echo base_url('/Home/login')?>">Login</a>
+
+        <?php if(allow('admin')): //muncul jika akun login sebagai admin ?>
+            <a class="nav-link" href="<?= base_url('/Admin/funcData'); ?>">Admin</a>
+        <?php endif; ?>    
+        <?php if(!allow('admin'||'user')): //muncul jika belum login ?>
+            <a href="<?php echo base_url('/Home/login')?>">Login</a>
+        <?php endif; ?>
+        <?php if(allow('admin'||'user')): //muncul jika sudah login ?>
+            <a href="<?php echo base_url('/Auth/logout')?>">Log out</a>
+        <?php endif; ?>
     </nav>
 
     <!-- icon diatas -->
     <div class="icons">
         <div class="fas fa-search" id="search-btn"></div>
         <div class="fas fa-shopping-cart" id="cart-btn"></div>
+        <?php if(!allow('admin'||'user')): ?>
         <a href="<?php echo base_url('/Home/login')?>">
             <div class="fas fa-user"></div>
         </a>
+        <?php endif; ?>
+        <?php if(allow('admin'||'user')): ?>
+        <a href="<?php echo base_url('/Auth/logout')?>">
+            <div class="fas fa-sign-out-alt"></div>
+        </a>
+        <?php endif; ?>
         <div class="fas fa-bars" id="menu-btn"></div>
     </div>
 
@@ -51,34 +67,34 @@
     <div class="cart-items-container">
         <div class="di-keranjang">
             <span class="fas fa-times"></span>
-            <img src="images/cart-item-1.png" alt="">
+            <img src="/images/cart-item-1.png" alt="">
             <div class="content">
                 <h3>cart item 01</h3>
-                <div class="harga">$15.99/-</div>
+                <div class="harga">Rp 49.999/-</div>
             </div>
         </div>
         <div class="di-keranjang">
             <span class="fas fa-times"></span>
-            <img src="images/cart-item-2.png" alt="">
+            <img src="/images/cart-item-2.png" alt="">
             <div class="content">
                 <h3>cart item 02</h3>
-                <div class="harga">$15.99/-</div>
+                <div class="harga">Rp 59.999/-</div>
             </div>
         </div>
         <div class="di-keranjang">
             <span class="fas fa-times"></span>
-            <img src="images/cart-item-3.png" alt="">
+            <img src="/images/cart-item-3.png" alt="">
             <div class="content">
                 <h3>cart item 03</h3>
-                <div class="harga">$15.99/-</div>
+                <div class="harga">Rp 39.999/-</div>
             </div>
         </div>
         <div class="di-keranjang">
             <span class="fas fa-times"></span>
-            <img src="images/cart-item-4.png" alt="">
+            <img src="/images/cart-item-4.png" alt="">
             <div class="content">
                 <h3>cart item 04</h3>
-                <div class="harga">$15.99/-</div>
+                <div class="harga">Rp 49.999/-</div>
             </div>
         </div>
         <a href="#" class="btn">checkout now</a>
@@ -104,8 +120,12 @@
 
     <div class="links">
         <a href="<?php echo base_url('/Home/coffee')?>">home</a>
+        <?php if(allow('admin'||'user')): ?>
         <a href="<?php echo base_url('/Home/produk')?>">products</a>
+        <?php endif; ?>
+        <?php if(!allow('admin'||'user')): ?>
         <a href="<?php echo base_url('/Home/login')?>">login</a>
+        <?php endif; ?>
     </div>
 
     <div class="credit">created by <span>M. Fikri Aulian</span> | all rights reserved</div>

@@ -20,6 +20,7 @@ class Home extends BaseController
 
     // halaman statis
     public function coffee(){
+        session();
         $dikirim=[
             'title'=>'Home'
         ];
@@ -42,14 +43,5 @@ class Home extends BaseController
         return view('/Pages/Users/Register', $data);
     }
 
-//bagian product
-    public function produk()//halaman product
-    {
-        $base=$this->model->findAll();
-        $dikirim=[
-            'data'=>$base,
-            'title'=>'Produk Kami'
-        ];
-        return view('/Pages/Product', $dikirim);
-    }
+
 }

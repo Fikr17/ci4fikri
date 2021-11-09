@@ -9,28 +9,28 @@
     <div class="content">
         <h3>fresh coffee in the morning</h3>
         <p>kopi nikmat dengan cita rasa yang khas, enak diminum saat pagi hari, dan dapat menurunkan stress disaat tugas menumpuk, disaat masalah hidup sedang banyak, dan hari-hari yang dilalui terasa suram.</p>
-        <a href="/Home/produk" class="btn">Beli Sekarang</a>
+        <a href="/produk" class="btn">Beli Sekarang</a>
     </div>
     
 </section>
 <!-- home section akhir -->
 
 <!-- Layanan section awal -->
-<section class="layanan" id="layanan">
-    <h1 class="heading">kelebihan <span>produk</span> kami</h1>
+<section class="kelebihan" id="kelebihan">
+    <h1 class="heading">kualitas <span> produk</span></h1>
     <div class="box-container">
         <div class="box">
-            <i class="fas fa-truck"></i>
+            <img src="/images/icon1.png" ></img>
             <h2>Aroma yang nikmat</h2>
             <p>Aroma dari kopi kami yang nikmat membuat daya tarik untuk diminum</p>
         </div>
         <div class="box">
-            <i class="fas fa-comments"></i>
+            <img src="/images/icon2.jpg"></img>
             <h2>cita rasa yang khas</h2>
             <p>rasa yang khas juga membuat lidah merasakan kenikmatan dari kopi kami</p>
         </div>
         <div class="box">
-            <i class="fas fa-user-tag"></i>
+            <img src="/images/icon3.png"></img>
             <h2>kualitas terbaik</h2>
             <p>menghadirkan kopi dengan kualitas terbaik dari seluruh Indonesia dengan GRADE TERBAIK dalam pemilihan biji kopi sesuai dengan standar Grading Internasional.</p>
         </div>
@@ -110,7 +110,7 @@
 
     </div>
     <div class="tombol">
-        <a href="/Home/produk" class="btn">Lihat Lainnya</a>
+        <a href="/produk" class="btn">Lihat Lainnya</a>
     </div>
 </section>
 <!-- Product section akhir -->
@@ -150,11 +150,13 @@
         </div>
 
         <div class="content">
-            <h3>Kami memproduksi kopi dengan cita rasa yang nikmat</h3>
+            <h3>Kopi Kebun</h3>
             
-            <p>- kebersihan dari seluruh proses pengolahan hingga pengiriman pasti terjamin</p>
-            <p>- cara penyimpanan dan pengolahan kopi menggunakan cara yang khusus.</p>
-            <p>- Pengiriman menggunakan pelindung yang sangat aman, sehingga cita rasa kopi yang didapatkan sama seperti sajian yang diberikan dari barista kami.</p>
+            <p>Perusahaan ini didirikan sejak tahun 2002 dan bertahan sampai sekarang meskipun dalam kondisi pandemi covid-19 di tahun 2020-sekarang.</p>
+            <p>perusahaan kami memiliki tujuan untuk mensejahterakan petani kopi yang tersebar di indonesia, apalagi pada kondisi pandemi seperti sekarang ini yang menyebabkan penurunan pendapatan penghasilan rakyat indondesia.</p>
+            <p>kopi yang kami ekspor ke negara lain adalah kopi dari para petani di indonesia yang memiliki kualitas bagus dan memiliki aroma serta rasa yang nikmat.</p>
+            <p>untuk pemasaran ke luar negeri sudah banyak di negara timur tengah, dan negara-negara asia tenggara.</p>
+            <p>kami juga memasarkan produk impor ke masyarakat indonesia di kota-kota besar.</p>
         </div>
 
     </div>
@@ -192,6 +194,7 @@
                 <input type="text" placeholder="kritik dan saran">
             </div>
             <input type="submit" value="Kirim" class="btn">
+            <p style="font-size: 2rem; color:#fff;">maaf, form ini belum berfungsi dengan baik</p>
         </form>
 
     </div>
