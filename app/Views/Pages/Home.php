@@ -11,7 +11,7 @@
         <p>kopi nikmat dengan cita rasa yang khas, enak diminum saat pagi hari, dan dapat menurunkan stress disaat tugas menumpuk, disaat masalah hidup sedang banyak, dan hari-hari yang dilalui terasa suram.</p>
         <a href="/produk" class="btn">Beli Sekarang</a>
     </div>
-    
+
 </section>
 <!-- home section akhir -->
 
@@ -20,7 +20,7 @@
     <h1 class="heading">kualitas <span> produk</span></h1>
     <div class="box-container">
         <div class="box">
-            <img src="/images/icon1.png" ></img>
+            <img src="/images/icon1.png"></img>
             <h2>Aroma yang nikmat</h2>
             <p>Aroma dari kopi kami yang nikmat membuat daya tarik untuk diminum</p>
         </div>
@@ -151,7 +151,7 @@
 
         <div class="content">
             <h3>Kopi Kebun</h3>
-            
+
             <p>Perusahaan ini didirikan sejak tahun 2002 dan bertahan sampai sekarang meskipun dalam kondisi pandemi covid-19 di tahun 2020-sekarang.</p>
             <p>perusahaan kami memiliki tujuan untuk mensejahterakan petani kopi yang tersebar di indonesia, apalagi pada kondisi pandemi seperti sekarang ini yang menyebabkan penurunan pendapatan penghasilan rakyat indondesia.</p>
             <p>kopi yang kami ekspor ke negara lain adalah kopi dari para petani di indonesia yang memiliki kualitas bagus dan memiliki aroma serta rasa yang nikmat.</p>
@@ -175,6 +175,7 @@
             <h3>contact person</h3>
             <p>alamat : sembawa, kecamatan sembawa, kabupaten <span> banyuasin, sumatera selatan, indonesia</span></p>
             <p>no. hp : 085709085617</p>
+            <p><i class="fab fa-github"></i> : <a href="https://github.com/Fikr17">https://github.com/Fikr17</a></p>
             <p><i class="fab fa-whatsapp"></i> : 085709085617</p>
             <p><i class="fab fa-facebook"></i> : muhammad fikri aulian</p>
             <p><i class="fab fa-instagram"></i> : @mfikria_17 (Muhammad Fikri Aulian)</p>
@@ -205,5 +206,3 @@
 
 
 <?php echo $this->endSection() ?>
-
-
