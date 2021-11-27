@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Pesan;
 use App\Models\TesModel;
 
 class Admin extends BaseController
@@ -49,6 +50,20 @@ class Admin extends BaseController
             'currentPage'=>$currentPage,
         ];
         return view('/CrudProduct/Table', $dikirim);
+    }
+
+    public function pesan()
+    {
+        
+        $currentPage = $this->request->getVar('page_data')? $this->request->getVar('page_data') : 1;
+        $model = new Pesan();
+        $dikirim = [
+            'title' => 'Pesan client', 
+            'data' => $model->paginate(5,'pesan'), 
+            'pager'=> $model->pager, 
+            'currentPage'=>$currentPage,
+        ];
+        return view('/CrudProduct/Pesan', $dikirim);
     }
 
     // fungsi create data

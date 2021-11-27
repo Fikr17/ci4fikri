@@ -180,22 +180,21 @@
             <p><i class="fab fa-facebook"></i> : muhammad fikri aulian</p>
             <p><i class="fab fa-instagram"></i> : @mfikria_17 (Muhammad Fikri Aulian)</p>
         </div>
-        <form action="" method="POST">
+        <form action="<?= base_url('/Home/post'); ?>" method="POST">
             <h3>Saran dan masukan</h3>
             <div class="inputBox">
                 <span class="fas fa-user"></span>
-                <input type="text" placeholder="nama">
+                <input type="text" placeholder="nama" name="nama">
             </div>
             <div class="inputBox">
                 <span class="fas fa-envelope"></span>
-                <input type="email" placeholder="email" required>
+                <input type="email" placeholder="email" required name="email">
             </div>
             <div class="inputBox">
                 <span class="fas fa-comment-dots"></span>
-                <input type="text" placeholder="kritik dan saran">
+                <input type="text" placeholder="kritik dan saran" name="pesan">
             </div>
             <input type="submit" value="Kirim" class="btn">
-            <p style="font-size: 2rem; color:#fff;">maaf, form ini belum berfungsi dengan baik</p>
         </form>
 
     </div>

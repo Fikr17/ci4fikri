@@ -4,7 +4,8 @@
 
 <?php echo $this->section('content'); ?>
     <?php if(allow('admin')): ; ?>
-    <section class="admin">
+    <section class="admin" style="margin-top: 5rem;">
+    <h1 style="text-align: center;">Data-Data Produk</h1>
         <a href="/Admin/formTambah" class="btn btn-primary" style="margin-left:10%; margin-bottom:1rem;">tambah data</a>
         <?php if(session()->get('pesan') != null): ?>
         <div class="col" style="margin-bottom: 1rem;">

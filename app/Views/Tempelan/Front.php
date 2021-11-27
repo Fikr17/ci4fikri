@@ -11,7 +11,8 @@
 
     <!-- custom css file link  -->
     <link rel="stylesheet" href="<?php echo base_url('/css/style.css') ?>">
-
+    <!-- ubah icon -->
+    <link rel="shortcut icon" href="<?php echo(base_url('/images/logo.png')) ?>" type="image/x-icon">
 </head>
 <body>
 <!-- header section starts  -->
@@ -114,7 +115,7 @@
 
     <div class="share">
         <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
+            <a href="https://github.com/Fikr17" class="fab fa-github"></a>
         <a href="#" class="fab fa-instagram"></a>
     </div>
 

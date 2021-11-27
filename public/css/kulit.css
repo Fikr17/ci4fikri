@@ -156,6 +156,7 @@ section {
 /* css produk */
 .product {
   padding: 1rem 0;
+  background-color: var(--main-color);
 }
 .product h1 {
   padding: 1rem 0;

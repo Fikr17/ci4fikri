@@ -41,11 +41,6 @@
                     <a class="nav-link" href="<?= base_url('/Home/register'); ?>">Register</a>
                 </li>
                 <?php endif; ?>
-                <?php if(allow('admin'))://dari youtube Agung Widhiatmojo ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?php echo base_url('/Admin/funcData')?>">Admin</a>
-                </li>
-                <?php endif; ?>
                 <?php if(allow('admin'||'user')): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?php echo base_url('/Auth/logout')?>">Log out</a>
@@ -66,7 +61,7 @@
 
     <div class="share">
         <a href="#" class="fab fa-facebook-f"></a>
-        <a href="#" class="fab fa-twitter"></a>
+        <a href="https://github.com/Fikr17" class="fab fa-github"></a>
         <a href="#" class="fab fa-instagram"></a>
     </div>
 
@@ -74,9 +69,6 @@
         <a href="<?php echo base_url('/Home/coffee')?>">home</a>
         <?php if(allow('admin'||'user')): ?>
         <a href="<?php echo base_url('/Produk/produk')?>">produk</a>
-        <?php endif; ?>
-        <?php if(allow('admin')): ?>
-        <a href="<?php echo base_url('/Admin/funcData')?>">admin</a>
         <?php endif; ?>
         <?php if(!allow('admin'||'user')): ?>
         <a href="<?php echo base_url('/Home/login')?>">login</a>

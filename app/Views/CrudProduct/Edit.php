@@ -3,7 +3,7 @@
 
 <?php echo $this->section('content') ?>
     <?php if(allow('admin')): ?>
-    <h1 class="text-center mb-5" style="padding-top: 2rem;">EDIT DATA</h1>
+    <h1 class="text-center mb-5" style="padding-top: 2rem; margin-top: 5rem;">EDIT DATA</h1>
 
     <!-- Form Tambah Data -->
     <?php foreach($data as $d){ ?>

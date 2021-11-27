@@ -3,7 +3,7 @@
 
 <?php echo $this->section('content') ?>
     <?php if(allow('admin')): ?>
-    <section class="tambah">
+    <section class="tambah" style="margin-top: 5rem;">
         <h1 class="text-center mb-5">TAMBAH DATA</h1>
     <!-- Form Tambah Data -->
     <form action="<?= base_url('/Admin/create') ?>" method="POST" enctype="multipart/form-data" style="max-width:500px; padding:1rem 1rem; margin:0 auto;">

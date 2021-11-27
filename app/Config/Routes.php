@@ -34,7 +34,6 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'Home::index');
 // $routes->get('/route', 'Home::tes');// '/route' memperpendek pencarian url
 $routes->get('/', 'Home::coffee');
-$routes->get('/', 'Home::login');
 $routes->delete('/Admin/(:num)', 'Admin::funcDeleteData/$1');
 $routes->get('/Admin/formEdit/(:num)', 'Admin::formEdit/$1');
 

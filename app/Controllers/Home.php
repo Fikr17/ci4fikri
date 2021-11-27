@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\TesModel;
+use App\Models\Pesan;
 
 class Home extends BaseController
 {
@@ -25,6 +26,16 @@ class Home extends BaseController
             'title'=>'Home'
         ];
         return view('/Pages/Home', $dikirim);//ini layout yang bener
+    }
+    public function post(){
+        $post=[
+            'nama' => $this->request->getPost('nama'),
+            'email' => $this->request->getPost('email'),
+            'pesan' => $this->request->getPost('pesan'),
+        ];
+        $model = new Pesan();
+        $model->save($post);
+        return redirect()->to('/');//ini layout yang bener
     }
     public function login(){
         session();

@@ -20,7 +20,7 @@
 
 <body>
     <!-- navbar bootstrap 5 -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="min-width: 450px;">
         <div class="container-fluid">
             <img src="/images/logo.png" class="navbar-brand" style="width: 4rem;">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,6 +40,12 @@
                             <a class="nav-link" href="<?= base_url('/Admin/funcData'); ?>">Admin</a>
                         </li>
                     <?php endif; ?>
+                    <?php if (allow('admin')) : 
+                    ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('/Admin/pesan'); ?>">Pesan</a>
+                        </li>
+                    <?php endif; ?>
                     <li class="nav-item">
                         <a class="nav-link" href="<?= base_url('/Auth/logout'); ?>">Log out</a>
                     </li>
@@ -56,11 +62,11 @@
 
     <!-- footer section starts  -->
 
-    <section class="footer">
+    <section class="footer" style="min-width: 450px;">
 
         <div class="share">
             <a href="#" class="fab fa-facebook-f"></a>
-            <a href="#" class="fab fa-twitter"></a>
+            <a href="https://github.com/Fikr17" class="fab fa-github"></a>
             <a href="#" class="fab fa-instagram"></a>
         </div>
 
@@ -105,6 +111,8 @@
         //     }
         // }
     </script>
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- Ionicons -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
