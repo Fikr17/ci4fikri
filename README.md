@@ -1,13 +1,5 @@
-Nama : M. Fikri Aulian
+## Simple CRUD using CodeIgniter 4
 
-Mata Kuliah : Dasar Komputer dan Pemrogramman
+this aplication using : CodeIgniter 4, Bootstrap 5, php, MySql, Css, Javascript
 
-Jurusan : Teknik Elektro angkatan 2021
-
-Universitas Sriwijaya
-
-
-
-aplikasi ini menggunakan : CodeIgniter 4, Bootstrap 5, php, MySql, Css, Javascript
-
-Simulasi web dapat anda kunjungi pada [link ini](https://kopi-kebun.000webhostapp.com/) 
+you can see simulation website in [this link](https://kopi-kebun.000webhostapp.com/) 
