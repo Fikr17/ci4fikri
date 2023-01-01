@@ -72,11 +72,11 @@ class Admin extends BaseController
         // $validasi =;
         if(!$this ->validate([
             'gambar' => [
-                'rules'=> 'uploaded[gambar]|max_size[gambar,10240]|mime_in[gambar,image/png,image/jpg]|is_image[gambar]',
+                'rules'=> 'uploaded[gambar]|max_size[gambar,10240]|is_image[gambar]|mime_in[gambar,image/png,image/jpg]',
                 'errors'=> [
                     'uploaded' => 'harus upload gambar',
-                    'is_image' => 'yang anda pilih bukan gambar',
                     'max_size' => 'ukuran maksimal 10 MB',
+                    'is_image' => 'yang anda pilih bukan is image',
                     'mime_in' => 'yang anda pilih bukan gambar',
                 ]
             ],
