@@ -3,3 +3,7 @@
 this aplication using : CodeIgniter 4, Bootstrap 5, php, MySql, Css, Javascript
 
 you can see simulation website in [this link](https://kopi-kebun.000webhostapp.com/) 
+
+### Tahun 2023
+
+- update version
