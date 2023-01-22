@@ -161,5 +161,9 @@ class Admin extends BaseController
         session()->setFlashdata('pesan', 'Data berhasil dihapus');
         return redirect()->to('/Admin/funcData');
     }
+    public function bebas()
+    {
+        // echo();
+    }
 
 }
